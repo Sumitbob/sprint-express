@@ -4,57 +4,62 @@
 	"description": "",
 	"main": "Server/index.js",
 	"scripts": {
-	  "start": "nodemon Server/index.js",
-	  "sql:model": "npx sequelize-cli model:generate --name",
-	  "sql:migration": "npx sequelize-cli migration:generate --name",
-	  "sql:migrate": "npx sequelize-cli db:migrate",
-	  "sql:migrate:undo": "npx sequelize-cli db:migrate:undo",
-	  "sql:seed": "npx sequelize-cli seed:generate --name",
-	  "sql:seed:run": "npx sequelize-cli db:seed:all",
-	  "sql:seed:undo": "npx sequelize-cli db:seed:undo",
-	  "lint:fix": "eslint --fix .",
-	  "commit": "git-cz"
+		"start": "nodemon Server/index.js",
+		"sql:model": "npx sequelize-cli model:generate --name",
+		"sql:migration": "npx sequelize-cli migration:generate --name",
+		"sql:migrate": "npx sequelize-cli db:migrate",
+		"sql:migrate:undo": "npx sequelize-cli db:migrate:undo",
+		"sql:seed": "npx sequelize-cli seed:generate --name",
+		"sql:seed:run": "npx sequelize-cli db:seed:all",
+		"sql:seed:undo": "npx sequelize-cli db:seed:undo",
+		"lint:fix": "eslint --fix .",
+		"commit": "git-cz"
 	},
 	"dependencies": {
-	  "bcryptjs": "^2.4.3",
-	  "body-parser": "^1.20.2",
-	  "express": "^4.17.1",
-	  "jsonwebtoken": "^9.0.2",
-	  "morgan": "^1.10.0",
-	  "mysql2": "^3.9.2",
-	  "sequelize": "^6.37.1"
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.20.2",
+		"express": "^4.17.1",
+		"jsonwebtoken": "^9.0.2",
+		"morgan": "^1.10.0",
+		"mysql2": "^3.9.2",
+		"sequelize": "^6.37.1"
 	},
 	"devDependencies": {
-	  "@commitlint/cli": "^19.2.1",
-	  "@commitlint/config-conventional": "^19.1.0",
-	  "commitizen": "^4.3.0",
-	  "conventional-changelog-cli": "^4.1.0",
-	  "cz-customizable": "^7.0.0",
-	  "eslint": "^8.57.0",
-	  "eslint-plugin-import": "^2.29.1",
-	  "eslint-plugin-jest": "^27.9.0",
-	  "eslint-plugin-node": "^11.1.0",
-	  "husky": "^9.0.11",
-	  "lint-staged": "^15.2.2"
+		"@commitlint/cli": "^19.2.1",
+		"@commitlint/config-conventional": "^19.1.0",
+		"commitizen": "^4.3.0",
+		"conventional-changelog-cli": "^4.1.0",
+		"cz-customizable": "^7.0.0",
+		"eslint": "^8.57.0",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-jest": "^27.9.0",
+		"eslint-plugin-node": "^11.1.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.2"
 	},
 	"config": {
 		"commitizen": {
-		  "path": "./node_modules/cz-conventional-changelog"
+			"path": "./node_modules/cz-conventional-changelog"
 		}
-	  },
-	  "eslintConfig": {
+	},
+	"eslintConfig": {
 		"plugins": [
-		  "prettier"
+			"prettier"
 		],
 		"extends": [
-		  "plugin:adonis/typescriptApp",
-		  "prettier"
+			"plugin:adonis/typescriptApp",
+			"prettier"
 		],
 		"rules": {
-		  "prettier/prettier": [
-			"error"
-		  ]
+			"prettier/prettier": [
+				"error"
+			]
+		}
+	},
+	"husky": {
+		"hooks": {
+		  "pre-commit": "lint-staged",
+		  "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 		}
 	  }
-  }
-  
+}
