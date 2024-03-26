@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 	res.json({success: true});
 });
 
-       app.use(router);
+        app.use(router);
 app.use(Routes);
 app.use(ErrorHandler.handle);
 module.exports = app;
