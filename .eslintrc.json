@@ -36,7 +36,7 @@
             "error"
         ],
         "no-console": [
-            "warn"
+            "error"
         ],
         "no-undef": [
             "error"
