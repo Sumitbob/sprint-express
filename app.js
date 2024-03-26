@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 	res.json({success: true});
 });
 
-
+console.log('Routes');
 app.use(router);
 app.use(Routes);
 app.use(ErrorHandler.handle);
