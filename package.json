@@ -13,7 +13,8 @@
 		"sql:seed:run": "npx sequelize-cli db:seed:all",
 		"sql:seed:undo": "npx sequelize-cli db:seed:undo",
 		"lint:fix": "eslint --fix .",
-		"commit": "git-cz"
+		"commit": "git-cz",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
@@ -28,6 +29,7 @@
 		"conventional-changelog-cli": "^4.1.0",
 		"cz-customizable": "^7.0.0",
 		"eslint": "^8.57.0",
+		"husky": "^9.0.11",
 		"lint-staged": "^15.2.2"
 	}
 }
