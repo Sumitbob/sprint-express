@@ -100,8 +100,8 @@ class BaseRepository {
 
 	async findOrCreate(data) {
 		try {
-			const [entity, created] = await this.model.findOrCreate({where: data});
-			return {entity, created};
+			const [entity] = await this.model.findOrCreate({where: data});
+			return entity;
 		} catch (error) {
 			throw new Error(DatabaseErrorHandler.handle(error));
 		}

@@ -9,7 +9,7 @@
         "ecmaVersion": "latest"
     },
     "globals": {
-        "SQL": "readonly",
+        "sequelize": "readonly",
         "process" : "readonly"
     },
     "rules": {

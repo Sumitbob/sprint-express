@@ -1,15 +1,16 @@
-const BaseController= require('./BaseController');
-const  AuthService = require('../Services/AuthService');
+const BaseController = require('./BaseController');
+const AuthService = require('../Services/AuthService');
 
 class AuthController extends BaseController {
 	constructor(res, next) {
 		super(res, next);
+		this.authService = new AuthService();
 	}
 
-	async register(req) {
-		const {mobileNumber, password} = req.body;
+	async sendRegistrationOtp(req) {
+		const {mobile} = req.body;
 		try {
-			const user = await AuthService.register(mobileNumber, password);
+			const user = await this.authService.sendRegistrationOtp(mobile);
 			this.sendSuccessResponse(user);
 		} catch (error) {
 			this.sendErrorResponse(error);
@@ -19,7 +20,7 @@ class AuthController extends BaseController {
 	async login(req) {
 		const {email, password} = req.body;
 		try {
-			const token = await AuthService.login(email, password);
+			const token = await this.authService.login(email, password);
 			this.sendSuccessResponse({token});
 		} catch (error) {
 			this.sendErrorResponse(error);

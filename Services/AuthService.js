@@ -1,26 +1,29 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {
-	NotFoundError,
-	ValidationError,
-} = require('../Middlewares/Handlers');
+const {NotFoundError, ValidationError} = require('../Middlewares/Handlers');
 const AuthRepository = require('../Repostitory/AuthRepository');
+const UserRegistrationRepository = require('../Repostitory/UserRegistrationRepository');
+const RandomNumberGenerator = require('../utils/RandomNumberGenerator');
+const PasswordEncoder = require('../utils/PasswordEncoder');
 
 class AuthService {
-	static async register(mobileNumber, password) {
+	constructor() {
+		this.randomNumberGenerator = new RandomNumberGenerator();
+		this.passwordEncoder = new PasswordEncoder();
+	}
+
+	async sendRegistrationOtp(mobileNumber) {
 		try {
-			const hashedPassword = await bcrypt.hash(password, 10);
-			const user = await AuthRepository.registerUser({
-				mobileNumber,
-				passwordHash: hashedPassword,
-			});
-			return user;
+			await UserRegistrationRepository.findOrCreate({mobile: mobileNumber});
+			const otp = this.randomNumberGenerator.generate();
+			const token = this.passwordEncoder.encode(`${mobileNumber}_${otp}`);
+			return {token, otp};
 		} catch (error) {
 			throw new Error(error);
 		}
 	}
-  
-	static async login(mobileNumber, password) {
+
+	async login(mobileNumber, password) {
 		try {
 			const user = await AuthRepository.findByMobileNumber(mobileNumber);
 			if (!user) throw new NotFoundError('User not found');

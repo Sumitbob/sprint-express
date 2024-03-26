@@ -5,12 +5,12 @@ class User extends Model {}
 User.init(
 	{
 		id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.BIGINT,
 			allowNull: false,
 			autoIncrement: true,
 			primaryKey: true,
 		},
-		mobileNumber: {
+		mobile: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			unique: {
@@ -22,13 +22,37 @@ User.init(
 				},
 			},
 		},
-		passwordHash: {
+		firstName: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
+		lastName: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		storeId: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+			references: {
+				model: 'stores', 
+				key: 'id', 
+			},
+			onUpdate: 'CASCADE', 
+			onDelete: 'CASCADE', 
+		},
+		roleId: {
+			type: DataTypes.BIGINT,
+			allowNull: false,
+			references: {
+				model: 'roles', 
+				key: 'id', 
+			},
+			onUpdate: 'CASCADE', 
+			onDelete: 'CASCADE', 
+		},
 	},
 	{
-		sequelize: SQL,
+		sequelize,
 		modelName: 'User',
 		tableName: 'users',
 		timestamps: true,

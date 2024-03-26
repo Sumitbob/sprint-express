@@ -35,7 +35,7 @@ class Database {
 			await this.sequelize.sync();
 			console.log('Models synchronized with the database schema.');
 
-			Object.defineProperty(global, 'SQL', {
+			Object.defineProperty(global, 'sequelize', {
 				value: this.sequelize,
 				configurable: false,
 				enumerable: true,
