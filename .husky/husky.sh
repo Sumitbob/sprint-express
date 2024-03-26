@@ -1,24 +1,10 @@
 #!/bin/sh
-command_exists () {
+command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-run_command () {
-  command="$1"
-  shift
-  if command_exists "$command"; then
-    "$command" "$@"
-  else
-    echo "Command $command does not exist. Skipping hook."
-  fi
-}
+# Get the absolute path to the directory containing this script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-run_hook () {
-  hook="$1"
-  shift
-  if [ -f ".husky/$hook" ]; then
-    run_command sh ".husky/$hook" "$@"
-  fi
-}
-
-run_hook "$@"
+# Run Husky with custom path to its files
+. "$SCRIPT_DIR/../../node_modules/husky/run.js" "$@"
