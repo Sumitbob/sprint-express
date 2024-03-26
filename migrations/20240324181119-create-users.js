@@ -13,15 +13,18 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false,
 				unique: true,
+				field: 'mobile_number'
 			},
 			passwordHash: {
 				type: Sequelize.STRING,
 				allowNull: false,
+				field: 'password_hash'
 			},
 			createdAt: {
 				type: Sequelize.DATE,
 				allowNull: false,
 				defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+				field: 'created_at'
 			},
 			updatedAt: {
 				type: Sequelize.DATE,
@@ -29,6 +32,7 @@ module.exports = {
 				defaultValue: Sequelize.literal(
 					'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
 				),
+				field: 'updated_at'
 			},
 		});
 	},
