@@ -89,9 +89,6 @@ class BaseRepository {
 	async findOne (options = {}) {
 		try {
 			const entity = await this.model.findOne(options);
-			if (!entity) {
-				throw new Error('Entity not found');
-			}
 			return entity;
 		} catch (error) {
 			throw new Error(DatabaseErrorHandler.handle(error));

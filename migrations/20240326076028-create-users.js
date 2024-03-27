@@ -51,7 +51,7 @@ module.exports = {
 		});
 
 		await queryInterface.sequelize.query(`
-      ALTER TABLE users AUTO_INCREMENT = 10000000;
+      ALTER TABLE users AUTO_INCREMENT = 1000000000001;
     `);
 	},
 

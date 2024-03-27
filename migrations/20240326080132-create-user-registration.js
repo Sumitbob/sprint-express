@@ -19,7 +19,6 @@ module.exports = {
 			verified: {
 				type: Sequelize.BOOLEAN,
 				allowNull: false,
-				unique: true,
 				defaultValue: false,
 				field: 'verified',
 			},
@@ -38,7 +37,7 @@ module.exports = {
 		});
 
 		await queryInterface.sequelize.query(`
-      ALTER TABLE user_registration AUTO_INCREMENT = 10000000;
+      ALTER TABLE user_registration AUTO_INCREMENT = 1000000000001;
     `);
 	},
 

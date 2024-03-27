@@ -30,16 +30,6 @@ User.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		storeId: {
-			type: DataTypes.BIGINT,
-			allowNull: false,
-			references: {
-				model: 'stores', 
-				key: 'id', 
-			},
-			onUpdate: 'CASCADE', 
-			onDelete: 'CASCADE', 
-		},
 		roleId: {
 			type: DataTypes.BIGINT,
 			allowNull: false,

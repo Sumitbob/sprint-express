@@ -25,7 +25,6 @@ UserRegistration.init(
 		verified: {
 			type: DataTypes.BOOLEAN,
 			allowNull: false,
-			unique: true,
 			defaultValue: false,
 		}
 	},

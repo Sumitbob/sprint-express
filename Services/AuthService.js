@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { NotFoundError } = require('../Middlewares/Handlers');
+const { NotFoundError, ValidationError } = require('../Middlewares/Handlers');
 const AuthRepository = require('../Repostitory/AuthRepository');
 const UserRegistrationRepository = require('../Repostitory/UserRegistrationRepository');
 const RandomNumberGenerator = require('../utils/RandomNumberGenerator');
@@ -14,31 +14,43 @@ class AuthService {
 	}
 
 	async sendRegistrationOtp (mobileNumber) {
-		try {
-			await this.model.findOrCreate({ mobile: mobileNumber });
-			const otp = this.randomNumberGenerator.generate();
-			const token = this.passwordEncoder.encode(`${mobileNumber}_${otp}`);
-			return { token, otp };
-		} catch (error) {
-			throw new Error(error);
+		const user = await this.userRegistrationRepository.findOrCreate({ mobile: mobileNumber });
+		if (user.verified) {
+			throw ValidationError('User already registered');
 		}
+		const otp = this.randomNumberGenerator.generate();
+		const token = this.passwordEncoder.encode(`${mobileNumber}_${otp}`);
+		return { token, otp };
 	}
 
-	async login (mobile) {
-		try {
-			const user = await this.model.findOne({ mobile });
-			if (!user) {
-				throw new NotFoundError('User not found');
-			}
-			return this.generateAuthToken(user.id);
-		} catch (error) {
-			throw new Error(`Error logging in: ${error.message}`);
+	async varifyRegistrationOtp (mobileNumber, otp, token) {
+		const user = await this.userRegistrationRepository.findOne({ mobile: mobileNumber });
+		if (!user) {
+			throw new NotFoundError('User not found');
 		}
+		const verified = this.passwordEncoder.verify(`${mobileNumber}_${otp}`, token);
+		if (!verified) {
+			throw new ValidationError('Invalid Otp');
+		}
+		const varifyToken = this.generateAuthToken(user.id);
+		return { token: varifyToken };
+	}
+
+	async registerUser (userData) {
+		const { mobile } = userData;
+		const user = await this.model.findOne({ mobile });
+		if (user) {
+			throw new ValidationError('User already exists');
+		}
+		const userRegister = await this.model.create(userData);
+		const token = this.generateAuthToken(userRegister.id);
+		await this.userRegistrationRepository.update(mobile, { verified: true });
+		return { token };
 	}
 
 	generateAuthToken (userId) {
 		const token = jwt.sign({ userId }, 'secret_key', {
-			expiresIn: '1h',
+			expiresIn: '5m',
 		});
 		return token;
 	}
