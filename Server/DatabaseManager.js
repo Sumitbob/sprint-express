@@ -11,7 +11,7 @@ class Database {
 			host,
 			dialect,
 			underscored,
-			logging: env === 'development',
+			logging: (env === 'development') ? console.log : false,
 		});
 	}
 
