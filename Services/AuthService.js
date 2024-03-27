@@ -23,7 +23,7 @@ class AuthService {
 		return { token, otp };
 	}
 
-	async varifyRegistrationOtp (mobileNumber, otp, token) {
+	async verifyRegistrationOtp (mobileNumber, otp, token) {
 		const user = await this.userRegistrationRepository.findOne({ mobile: mobileNumber });
 		if (!user) {
 			throw new NotFoundError('User not found');
@@ -56,4 +56,4 @@ class AuthService {
 	}
 }
 
-module.exports = AuthService;
+module.exports = new AuthService();

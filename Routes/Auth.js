@@ -1,24 +1,10 @@
 const express = require('express');
-const AuthController = require('../Controllers/AuthController');
-const RegistrationAuth = require('../Middlewares/RegistrationAuth');
-
 const router = express.Router();
+const AuthController = require('../Controllers/AuthController');
+const ResponseHandler = require('../Middlewares/Handlers/ResponseHandler');
 
-const authMiddleware = (req, res, next) => {
-	req.authController = new AuthController(res, next);
-	next();
-};
-
-router.post('/send-registration-otp', authMiddleware, async (req, res) => {
-	req.authController.sendRegistrationOtp(req, res);
-});
-
-router.post('/verify-registration-otp', authMiddleware, async (req, res) => {
-	req.authController.varifyRegistrationOtp(req, res);
-});
-
-router.post('/register-user', RegistrationAuth.registration, authMiddleware, async (req, res) => {
-	req.authController.registerUser(req, res);
-});
+router.post('/send-registration-otp', ResponseHandler.handle(AuthController.sendRegistrationOtp));
+router.post('/verify-registration-otp', ResponseHandler.handle(AuthController.verifyRegistrationOtp));
+router.post('/register-user', ResponseHandler.handle(AuthController.registerUser));
 
 module.exports = router;

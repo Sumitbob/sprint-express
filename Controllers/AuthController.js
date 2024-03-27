@@ -1,42 +1,24 @@
-const BaseController = require('./BaseController');
 const AuthService = require('../Services/AuthService');
 
-class AuthController extends BaseController {
-	constructor (res, next) {
-		super(res, next); // Pass res and next to the BaseController constructor
-		this.service = new AuthService();
-	}
-
+class AuthController {
 	async sendRegistrationOtp (req) {
 		const { mobile } = req.body;
-		try {
-			const user = await this.service.sendRegistrationOtp(mobile);
-			this.sendSuccessResponse(user);
-		} catch (error) {
-			this.sendErrorResponse(error);
-		}
+		return AuthService.sendRegistrationOtp(mobile);
+		
 	}
 
-	async varifyRegistrationOtp (req) {
+	async verifyRegistrationOtp (req) {
 		const { mobile, otp } = req.body;
 		const { token } = req.headers;
-		try {
-			const user = await this.service.varifyRegistrationOtp(mobile, otp, token);
-			this.sendSuccessResponse(user);
-		} catch (error) {
-			this.sendErrorResponse(error);
-		}
+		return AuthService.verifyRegistrationOtp(mobile, otp, token);
+		
 	}
 
 	async registerUser (req) {
 		const userData = req.body;
-		try {
-			const registration = await this.service.registerUser(userData);
-			this.sendSuccessResponse(registration);
-		} catch (error) {
-			this.sendErrorResponse(error);
-		}
+		return AuthService.registerUser(userData);
+		
 	}
 }
 
-module.exports = AuthController;
+module.exports = new AuthController();
