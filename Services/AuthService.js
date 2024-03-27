@@ -10,11 +10,12 @@ class AuthService {
 	constructor () {
 		this.randomNumberGenerator = new RandomNumberGenerator();
 		this.passwordEncoder = new PasswordEncoder();
+		this.model = new UserRegistrationRepository();
 	}
 
 	async sendRegistrationOtp (mobileNumber) {
 		try {
-			await UserRegistrationRepository.findOrCreate({ mobile: mobileNumber });
+			await this.model.findOrCreate({ mobile: mobileNumber });
 			const otp = this.randomNumberGenerator.generate();
 			const token = this.passwordEncoder.encode(`${mobileNumber}_${otp}`);
 			return { token, otp };

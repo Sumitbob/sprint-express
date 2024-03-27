@@ -7,4 +7,4 @@ class UserRegistrationRepository extends BaseRepository {
 	}
 }
 
-module.exports = new UserRegistrationRepository();
+module.exports = UserRegistrationRepository;
