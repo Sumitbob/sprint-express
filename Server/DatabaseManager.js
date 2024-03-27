@@ -1,26 +1,16 @@
 /* eslint-disable no-console */
 
 const {Sequelize} = require('sequelize');
+const config = require('../config/config');
 class Database {
 	constructor() {
 		const env = process.env.NODE_ENV || 'development';
-		// const {
-		//   NODE_ENV,
-		//   DB_USERNAME,
-		//   DB_PASSWORD,
-		//   DB_DATABASE,
-		//   DB_HOST,
-		//   DB_DIALECT,
-		// } = process.env;
-		const username = 'root';
-		const password = '';
-		const database = 'billing';
-		const host = 'localhost';
-		const dialect = 'mysql';
+		const {username, password, database, host, dialect, underscored} = config[env];
 
 		this.sequelize = new Sequelize(database, username, password, {
 			host,
 			dialect,
+			underscored,
 			logging: env === 'development',
 		});
 	}
@@ -28,9 +18,7 @@ class Database {
 	async initializeSQL() {
 		try {
 			await this.sequelize.authenticate();
-			console.log(
-				'Connection to the database has been established successfully.'
-			);
+			console.log('Connection to the database has been established successfully.');
 
 			await this.sequelize.sync();
 			console.log('Models synchronized with the database schema.');
