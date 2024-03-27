@@ -16,10 +16,34 @@ To get started with this project, follow these steps:
 
 1. Clone this repository.
 2. Install dependencies using `npm install`.
-3. Set up your database configurations in `config/database.js`.
+3. Set up your database configurations in `config/config.js`.
 4. Run database migrations with `npm run sql:migrate`.
 5. Start the server with `npm start`.
 
-## Contributing
+## Project Structure
 
-Contributions are welcome! Please fork this repository and submit a pull request with your changes.
+This project follows a structured architecture to maintain code organization and separation of concerns. Below is an overview of the main directories and their purposes:
+
+- **Routes**: Contains route definitions for different endpoints of the API.
+  - Each route file maps HTTP requests to corresponding controller methods.
+- **Controllers**: Contains controller logic for handling incoming requests and sending responses.
+  - Controllers interact with services to perform business logic and handle data processing.
+- **Services**: Contains service modules that encapsulate business logic and application-specific functionalities.
+  - Services handle complex operations, such as data validation, authentication, and authorization.
+- **Repository**: Contains repository modules responsible for database operations and data access.
+  - Repositories abstract database interactions and provide methods for CRUD operations.
+- **Models**: Contains database models defined using an ORM (Object-Relational Mapping) library.
+  - Models represent database tables and define the structure of data entities.
+
+This structured approach helps in maintaining a clear separation of concerns, making the codebase modular, scalable, and easier to maintain. Each directory focuses on a specific aspect of the application, promoting code reusability and enhancing code organization.
+
+## Dependencies
+
+Below are the major dependencies and libraries used in this project, along with their versions:
+
+- **Express.js**: Fast, unopinionated, minimalist web framework for Node.js.
+- **Sequelize ORM**: Multi-dialect ORM for Node.js.
+- **bcryptjs**: Library for hashing passwords.
+- **jsonwebtoken**: Library for generating and verifying JSON Web Tokens (JWT).
+- **eslint**: Linter for JavaScript and JSX.
+- **husky**: Git hooks made easy.
