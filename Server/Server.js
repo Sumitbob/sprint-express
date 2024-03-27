@@ -4,11 +4,11 @@
 const http = require('http');
 
 class Server {
-	constructor(app) {
+	constructor (app) {
 		this.app = app;
 	}
 
-	start(port) {
+	start (port) {
 		const server = http.createServer(this.app);
 		server.listen(port);
 		server.on('error', (error) => this.onError(error, port));
@@ -16,7 +16,7 @@ class Server {
 		return server;
 	}
 
-	onError(error, port) {
+	onError (error, port) {
 		if (error.syscall !== 'listen') {
 			throw error;
 		}
@@ -35,7 +35,7 @@ class Server {
 		}
 	}
 
-	onListening(server) {
+	onListening (server) {
 		const addr = server.address();
 		const bind =
 			typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;

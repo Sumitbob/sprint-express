@@ -1,8 +1,8 @@
 const BaseRepository = require('./BaseRepository');
-const {UserRegistration} = require('../Models');
+const { UserRegistration } = require('../Models');
 
 class UserRegistrationRepository extends BaseRepository {
-	constructor() {
+	constructor () {
 		super(UserRegistration);
 	}
 }

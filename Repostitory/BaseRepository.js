@@ -1,11 +1,11 @@
-const {DatabaseErrorHandler} = require('../Middlewares/Handlers');
+const { DatabaseErrorHandler } = require('../Middlewares/Handlers');
 
 class BaseRepository {
-	constructor(model) {
+	constructor (model) {
 		this.model = model;
 	}
 
-	async create(data) {
+	async create (data) {
 		try {
 			const entity = await this.model.create(data);
 			return entity;
@@ -14,7 +14,7 @@ class BaseRepository {
 		}
 	}
 
-	async findById(id) {
+	async findById (id) {
 		try {
 			const entity = await this.model.findByPk(id);
 			return entity;
@@ -23,10 +23,10 @@ class BaseRepository {
 		}
 	}
 
-	async update(id, data) {
+	async update (id, data) {
 		try {
 			const [rowsUpdated, updatedEntities] = await this.model.update(data, {
-				where: {id},
+				where: { id },
 				returning: true,
 			});
 			if (rowsUpdated === 0) {
@@ -38,7 +38,7 @@ class BaseRepository {
 		}
 	}
 
-	async updateAll(data, options = {}) {
+	async updateAll (data, options = {}) {
 		try {
 			const result = await this.model.update(data, options);
 			return result;
@@ -47,19 +47,19 @@ class BaseRepository {
 		}
 	}
 
-	async delete(id) {
+	async delete (id) {
 		try {
-			const rowsDeleted = await this.model.destroy({where: {id}});
+			const rowsDeleted = await this.model.destroy({ where: { id } });
 			if (rowsDeleted === 0) {
 				throw new Error('Entity not found');
 			}
-			return {success: true};
+			return { success: true };
 		} catch (error) {
 			throw new Error(DatabaseErrorHandler.handle(error));
 		}
 	}
 
-	async findAll() {
+	async findAll () {
 		try {
 			const entities = await this.model.findAll();
 			return entities;
@@ -68,7 +68,7 @@ class BaseRepository {
 		}
 	}
 
-	async count() {
+	async count () {
 		try {
 			const count = await this.model.count();
 			return count;
@@ -77,7 +77,7 @@ class BaseRepository {
 		}
 	}
 
-	async findAndCountAll(options = {}) {
+	async findAndCountAll (options = {}) {
 		try {
 			const result = await this.model.findAndCountAll(options);
 			return result;
@@ -86,7 +86,7 @@ class BaseRepository {
 		}
 	}
 
-	async findOne(options = {}) {
+	async findOne (options = {}) {
 		try {
 			const entity = await this.model.findOne(options);
 			if (!entity) {
@@ -98,16 +98,16 @@ class BaseRepository {
 		}
 	}
 
-	async findOrCreate(data) {
+	async findOrCreate (data) {
 		try {
-			const [entity] = await this.model.findOrCreate({where: data});
+			const [entity] = await this.model.findOrCreate({ where: data });
 			return entity;
 		} catch (error) {
 			throw new Error(DatabaseErrorHandler.handle(error));
 		}
 	}
 
-	async bulkCreate(data) {
+	async bulkCreate (data) {
 		try {
 			const entities = await this.model.bulkCreate(data);
 			return entities;

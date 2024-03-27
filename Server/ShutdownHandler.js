@@ -2,14 +2,14 @@
 /* eslint-disable no-console */
 
 class ShutdownHandler {
-	constructor(httpServer, sequelize) {
+	constructor (httpServer, sequelize) {
 		this.httpServer = httpServer;
 		this.sequelize = sequelize;
 		this.gracefulShutDownCalled = false;
 		this.uncaughtExceptionAttempts = 0;
 	}
 
-	async gracefulShutdown(signal = null) {
+	async gracefulShutdown (signal = null) {
 		this.gracefulShutDownCalled = true;
 		if (signal !== null) console.log(`Received ${signal}`);
 		console.log('Gracefully shutting down');
@@ -22,7 +22,7 @@ class ShutdownHandler {
 		}
 	}
 
-	async handleUncaughtException(err, origin) {
+	async handleUncaughtException (err, origin) {
 		console.error(`Uncaught exception ${err}\nException origin ${origin}`);
 		try {
 			if (this.gracefulShutDownCalled) {
@@ -43,7 +43,7 @@ class ShutdownHandler {
 		}
 	}
 
-	async handleUnhandledRejection(reason, promise) {
+	async handleUnhandledRejection (reason, promise) {
 		console.error(`Unhandled rejection at ${promise}\nReason ${reason}`);
 		try {
 			this.gracefulShutDownCalled
@@ -56,7 +56,7 @@ class ShutdownHandler {
 		}
 	}
 
-	async onServerClosed() {
+	async onServerClosed () {
 		console.log('HTTP server closed');
 		try {
 			await this.sequelize.close();
@@ -68,7 +68,7 @@ class ShutdownHandler {
 		process.exit(0);
 	}
 
-	async retryOnServerClosed() {
+	async retryOnServerClosed () {
 		try {
 			await this.onServerClosed();
 		} catch (err) {

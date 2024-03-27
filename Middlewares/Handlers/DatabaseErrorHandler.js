@@ -1,7 +1,7 @@
-const {ValidationError} = require('sequelize');
+const { ValidationError } = require('sequelize');
 
 class DatabaseErrorHandler {
-	static handle(error) {
+	static handle (error) {
 		if (error instanceof ValidationError) {
 			return error.errors.map((err) => err.message).join(', ');
 		}

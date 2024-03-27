@@ -1,5 +1,5 @@
 class ErrorHandler {
-	static handle(err, req, res,) {
+	static handle (err, req, res,) {
 		let statusCode = 500;
 
 		let message = 'Internal Server Error';
@@ -17,7 +17,7 @@ class ErrorHandler {
 			message = err.message || 'Internal Server Error';
 		}
 
-		res.status(statusCode).json({success: false, message});
+		res.status(statusCode).json({ success: false, message });
 	}
 }
 

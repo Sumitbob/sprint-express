@@ -1,8 +1,8 @@
 const BaseRepository = require('./BaseRepository');
-const {User} = require('../Models');
+const { User } = require('../Models');
 
 class AuthRepository extends BaseRepository {
-	constructor() {
+	constructor () {
 		super(User);
 	}
 }

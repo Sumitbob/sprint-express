@@ -1,14 +1,14 @@
 class BaseController {
-	constructor(res, next) {
+	constructor (res, next) {
 		this.res = res;
 		this.next = next;
 	}
 
-	sendSuccessResponse(data) {
-		this.res.status(200).json({success: true, data});
+	sendSuccessResponse (data) {
+		this.res.status(200).json({ success: true, data });
 	}
 
-	sendErrorResponse(error) {
+	sendErrorResponse (error) {
 		this.next(error);
 	}
 }

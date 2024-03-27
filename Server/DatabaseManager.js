@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 
-const {Sequelize} = require('sequelize');
+const { Sequelize } = require('sequelize');
 const config = require('../config/config');
 class Database {
-	constructor() {
+	constructor () {
 		const env = process.env.NODE_ENV || 'development';
-		const {username, password, database, host, dialect, underscored} = config[env];
+		const { username, password, database, host, dialect, underscored } = config[env];
 
 		this.sequelize = new Sequelize(database, username, password, {
 			host,
@@ -15,7 +15,7 @@ class Database {
 		});
 	}
 
-	async initializeSQL() {
+	async initializeSQL () {
 		try {
 			await this.sequelize.authenticate();
 			console.log('Connection to the database has been established successfully.');

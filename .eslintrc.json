@@ -10,7 +10,7 @@
     },
     "globals": {
         "sequelize": "readonly",
-        "process" : "readonly"
+        "process": "readonly"
     },
     "rules": {
         "indent": [
@@ -57,10 +57,29 @@
             "error"
         ],
         "object-curly-spacing": [
-            "error"
+            "error",
+            "always"
         ],
-        "brace-style": [
-            "error"
+        "block-spacing": [
+            "error",
+            "always"
+        ],
+        "space-before-function-paren": [
+            "error",
+            "always"
+        ],
+        "space-in-parens": [
+            "error",
+            "never"
+        ],
+        "space-before-blocks": [
+            "error",
+            "always"
+        ],
+        "padding-line-between-statements": [
+            "error",
+            { "blankLine": "always", "prev": "*", "next": "block" },
+            { "blankLine": "always", "prev": "block", "next": "*" }
         ]
     }
 }
