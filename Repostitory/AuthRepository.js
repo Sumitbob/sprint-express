@@ -7,4 +7,4 @@ class AuthRepository extends BaseRepository {
 	}
 }
 
-module.exports = new AuthRepository();
+module.exports = AuthRepository;
