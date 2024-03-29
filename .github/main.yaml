@@ -1,0 +1,15 @@
+name: Run CGI Script
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run_cgi_script:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run CGI script
+        run: |
+          ./cgi/example.sh
