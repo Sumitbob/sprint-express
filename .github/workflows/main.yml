@@ -1,0 +1,15 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run deployment script
+        run: |
+          curl -X GET http://51.21.134.48/cgi-bin/deploy.cgi
