@@ -5,7 +5,6 @@ This is a boilerplate project for Node.js applications.
 ## Features
 
 - Express.js server with basic setup
-- Sequelize ORM for database management
 - JWT authentication middleware
 - ESLint and Husky for code linting and formatting
 - Commit linting with conventional commits
@@ -16,9 +15,8 @@ To get started with this project, follow these steps:
 
 1. Clone this repository.
 2. Install dependencies using `npm install`.
-3. Set up your database configurations in `config/config.js`.
-4. Run database migrations with `npm run sql:migrate`.
-5. Start the server with `npm start`.
+3. Set up your database configurations in `config.js`.
+4. Start the server with `npm start`.
 
 ## Project Structure
 
@@ -30,8 +28,6 @@ This project follows a structured architecture to maintain code organization and
   - Controllers interact with services to perform business logic and handle data processing.
 - **Services**: Contains service modules that encapsulate business logic and application-specific functionalities.
   - Services handle complex operations, such as data validation, authentication, and authorization.
-- **Repository**: Contains repository modules responsible for database operations and data access.
-  - Repositories abstract database interactions and provide methods for CRUD operations.
 - **Models**: Contains database models defined using an ORM (Object-Relational Mapping) library.
   - Models represent database tables and define the structure of data entities.
 
@@ -42,7 +38,6 @@ This structured approach helps in maintaining a clear separation of concerns, ma
 Below are the major dependencies and libraries used in this project, along with their versions:
 
 - **Express.js**: Fast, unopinionated, minimalist web framework for Node.js.
-- **Sequelize ORM**: Multi-dialect ORM for Node.js.
 - **bcryptjs**: Library for hashing passwords.
 - **jsonwebtoken**: Library for generating and verifying JSON Web Tokens (JWT).
 - **eslint**: Linter for JavaScript and JSX.
