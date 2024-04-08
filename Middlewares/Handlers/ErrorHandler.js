@@ -1,6 +1,8 @@
 class ErrorHandler {
 	// eslint-disable-next-line no-unused-vars
 	static handle (err, req, res, next) {
+		// eslint-disable-next-line no-console
+		console.error(err);
 		let statusCode = 500;
 		let message = 'Internal Server Error';
 		if (err.name === 'ValidationError') {

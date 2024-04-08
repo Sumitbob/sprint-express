@@ -5,7 +5,8 @@ const ShutdownHandler = require('./ShutdownHandler.js');
 
 (async () => {
 	try {
-		await new DatabaseManager().initializeSQL();
+		await new DatabaseManager('development').initializeSQL();
+		
 		const httpServer = require('./main.js');
 
 		const shutdownHandler = new ShutdownHandler(httpServer);

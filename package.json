@@ -5,13 +5,6 @@
 	"main": "Server/index.js",
 	"scripts": {
 		"start": "nodemon Server/index.js",
-		"sql:model": "npx sequelize-cli model:generate --name",
-		"sql:migration": "npx sequelize-cli migration:generate --name",
-		"sql:migrate": "npx sequelize-cli db:migrate",
-		"sql:migrate:undo": "npx sequelize-cli db:migrate:undo",
-		"sql:seed": "npx sequelize-cli seed:generate --name",
-		"sql:seed:run": "npx sequelize-cli db:seed:all",
-		"sql:seed:undo": "npx sequelize-cli db:seed:undo",
 		"lint:fix": "eslint --fix .",
 		"commit": "git-cz",
 		"prepare": "husky"
@@ -23,8 +16,7 @@
 		"joi": "^17.12.2",
 		"jsonwebtoken": "^9.0.2",
 		"morgan": "^1.10.0",
-		"mysql2": "^3.9.2",
-		"sequelize": "^6.37.1"
+		"mysql2": "^3.9.2"
 	},
 	"devDependencies": {
 		"conventional-changelog-cli": "^4.1.0",

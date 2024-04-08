@@ -10,7 +10,7 @@ const { ErrorHandler } = require('./Middlewares/Handlers');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-const Routes = require('./Routes');
+const Routes = require('./routes');
 
 router.get('/', (req, res) => {
 	res.json({ success: true });
