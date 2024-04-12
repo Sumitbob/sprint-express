@@ -57,14 +57,13 @@ class ShutdownHandler {
 	}
 
 	async onServerClosed () {
-		console.log('HTTP server closed');
 		try {
 			await Promise.all([this.readDb.end(), this.writeDb.end()]);
 			console.log('Database connections closed');
 		} catch (err) {
 			console.error('Error closing database connections', err);
 		}
-
+		console.log('HTTP server closed');
 		process.exit(0);
 	}
 
