@@ -8,7 +8,7 @@ class Base extends TransponseReqestResponse {
 	}
 
 	get clientId () {
-		return 'TEST10171219edd76a45a85dc5471cd891217101';//get from static
+		return '';//get from static
 	}
 
 	get clientSecret () {
