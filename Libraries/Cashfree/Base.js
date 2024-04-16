@@ -1,5 +1,5 @@
 const axios = require('axios');
-const TransponseReqestResponse = require('../TransponseReqestResponse'); ///
+const TransponseReqestResponse = require('../TransponseRequestResponse'); ///
 
 class Base extends TransponseReqestResponse {
 	constructor (validatorClass) {
@@ -8,11 +8,11 @@ class Base extends TransponseReqestResponse {
 	}
 
 	get clientId () {
-		return process.env.CLIENT_ID;
+		return process.env.CLIENT_ID;//get from static
 	}
 
 	get clientSecret () {
-		return process.env.CLIENT_SECRET;
+		return process.env.CLIENT_SECRET; //get from static
 	}
 
 	get apiEndpointUrl () {
