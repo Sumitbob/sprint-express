@@ -7,8 +7,6 @@ class Base extends TransponseReqestResponse {
 		this.validatorClass = validatorClass;
 	}
 
-	
-
 	get clientId () {
 		return process.env.CLIENT_ID;
 	}
