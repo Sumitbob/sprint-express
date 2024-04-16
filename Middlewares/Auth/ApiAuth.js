@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../Handlers/UnauthorizedError');
-const AccessTokenModel = require('../../Models/AccessToken');
+const AccessTokenModel = require('../../Models/AccessTokenModel');
 const ActiveSessionStatus = 1;
 
 class ApiAuth {
