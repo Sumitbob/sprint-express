@@ -32,16 +32,4 @@ class Cashfree {
 
 	}
 }
-const data = {
-	customerDetails: {
-		customerId: '7112AAA812236',
-		customerEmail: 'paramanand982@gmail.com',
-		customerPhone: '7239887406',
-		customerName: 'Paramanand'
-	},
-	orderId: 'test-ord-11',
-	orderAmount: 10,
-	orderCurrency: 'INR'
-};
-new Cashfree().createPaymentOrder(data);
-// module.exports = new Cashfree();
+module.exports = new Cashfree();
