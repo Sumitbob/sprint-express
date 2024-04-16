@@ -8,4 +8,4 @@ class UserModel extends BaseModel {
 	}
 }
 
-module.exports = UserModel;
+module.exports = new  UserModel();

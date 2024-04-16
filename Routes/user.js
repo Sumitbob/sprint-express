@@ -6,5 +6,4 @@ const { sendLoginOtpValidator } = require('../Validators/UserRequestValidator');
 
 router.post('/send-login-otp', sendLoginOtpValidator.validate.bind(sendLoginOtpValidator), ResponseHandler.handle(UserController.sendLoginOtp));
 
-
 module.exports = router;

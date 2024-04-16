@@ -1,9 +1,9 @@
 module.exports = {
 	development: {
-		username: 'root',
-		password: '',
-		database: 'billing',
-		host: 'localhost',
+		username: 'admin',
+		password: 'Paramanand#1',
+		database: 'sprint-express',
+		host: 'database-2.c14kawkmycg3.eu-north-1.rds.amazonaws.com',
 		dialect: 'mysql',
 		underscored: true,
 	},

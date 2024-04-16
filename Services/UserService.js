@@ -6,25 +6,24 @@ const UserModel = require('../Models/UserModel');
 
 class UserService {
 	constructor () {
-		this.model = new UserModel();
 		this.randomNumberGenerator = new RandomNumberGenerator();
 		this.passwordEncoder = new PasswordEncoder();
 	}
 
 	async sendLoginOtp (mobileNumber) {
 
-		const user = await this.model.findOne({
+		const user = await UserModel.findOne({
 			mobile : mobileNumber,
 			firstName: 'Paramanand',
 			lastName: 'Balara'
 		});
-		// await this.model.insert({
+		// await UserModel.insert({
 		// 	mobile : 7239887408,
 		// 	firstName: 'Paramanand',
 		// 	lastName: 'Balara'
 		// });  // for insert
 
-		// await this.model.update(1000000000015, { firstName: 'Sandeep',
+		// await UserModel.update(1000000000015, { firstName: 'Sandeep',
 		// 	lastName: 'Balara' }); for update
 		
 		if (!user) {
