@@ -6,6 +6,10 @@ class InitiatePayment  extends Base {
 		super(Validator);
 	}
 
+	get serviceEndpoint () {
+		return 'initiate_payment';
+	}
+    
 	requestKeyMap () {
 		return {
 			customerDetails: 'customer_details',
