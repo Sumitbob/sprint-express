@@ -12,7 +12,7 @@ class Base extends TransponseReqestResponse {
 	}
 
 	get clientSecret () {
-		return 'cfsk_ma_test_4e6f5087f6f89d31c2d82200f6fe99c4_c4189e6f'; //get from static
+		return ''; //get from static
 	}
 
 	get apiEndpointUrl () {
@@ -45,7 +45,7 @@ class Base extends TransponseReqestResponse {
 		const requestTranspose = this.transposeRequest(data);
 		const response = await this.postQuery(requestTranspose);
 		const responseTranspose = this.transposeResponse(response);
-        
+
 		return { response: responseTranspose, rawResponse: JSON.stringify(response), rawRequest: JSON.stringify(data) };
 	}
 }
