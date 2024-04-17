@@ -1,6 +1,6 @@
 const BaseModel = require('./BaseModel');
 
-const tableName = 'cashFreeRequestResponseLog';
+const tableName = 'cashfreeRequestResponseLog';
 class CashfreeRequestResponseLog extends BaseModel {
 	constructor () {
 		super(tableName);

@@ -17,16 +17,16 @@ class TransponseReqestResponse {
 			throw new ValidationError(error.details[0].message);
 		}
 		return value;
-		
+
 	}
 	transposeRequest (data) {
 		return this.transpose(data, this.requestKeyMap());
 	}
-    
+
 	transposeResponse (data) {
 		return this.transpose(data, this.responseKeyMap());
 	}
-    
+
 	transpose (data, keyMap) {
 		return _.fromPairs(
 			_.map(_.toPairs(data), ([key, value]) => {
@@ -38,6 +38,13 @@ class TransponseReqestResponse {
 			}),
 		);
 	}
+	updateDefaultData (data) {
+		for (const [key, value] of Object.entries(this.defaultRequestData)) {
+			data[key] = data[key] ? data[key] : value;
+		}
+		return data;
+	}
+
 }
 
 module.exports = TransponseReqestResponse;

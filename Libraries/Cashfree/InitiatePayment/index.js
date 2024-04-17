@@ -20,6 +20,8 @@ class InitiatePayment extends Base {
 			orderId: 'order_id',
 			orderAmount: 'order_amount',
 			orderCurrency: 'order_currency',
+			orferMeta : 'orfer_meta',
+			notifyUrl : 'notify_url',
 		};
 	}
 
@@ -50,8 +52,15 @@ class InitiatePayment extends Base {
 			'payment_session_id':'paymentSessionId',
 			'terminal_data':'terminalData'
 		};
+	}
 
-
+	get defaultRequestData () {
+		return {
+			orderCurrency : 'INR',
+			orderMeta : {
+				notifyUrl : 'https://example.com/notify'
+			}
+		};
 	}
 }
 

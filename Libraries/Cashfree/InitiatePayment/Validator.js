@@ -12,7 +12,10 @@ class Validator {
 			}).required(),
 			orderId: Joi.string().min(3).max(100).required(),
 			orderAmount: Joi.number().positive().required(),
-			orderCurrency: Joi.string().min(3).max(100).required()
+			orderCurrency: Joi.string().min(3).max(5).required(),
+			orderMeta : Joi.object({
+				notifyUrl : Joi.string().uri().required(),
+			}).required()
 		});
 	}
 

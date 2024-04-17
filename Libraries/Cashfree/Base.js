@@ -41,11 +41,11 @@ class Base extends TransponseReqestResponse {
 	}
 
 	async call (data) {
+		data = this.updateDefaultData(data);
 		data = await this.validate(data);
 		const requestTranspose = this.transposeRequest(data);
 		const response = await this.postQuery(requestTranspose);
 		const responseTranspose = this.transposeResponse(response);
-
 		return { response: responseTranspose, rawResponse: JSON.stringify(response), rawRequest: JSON.stringify(data) };
 	}
 }
