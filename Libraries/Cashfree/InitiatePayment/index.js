@@ -20,7 +20,7 @@ class InitiatePayment extends Base {
 			orderId: 'order_id',
 			orderAmount: 'order_amount',
 			orderCurrency: 'order_currency',
-			orferMeta : 'orfer_meta',
+			orderMeta : 'order_meta',
 			notifyUrl : 'notify_url',
 		};
 	}
@@ -58,7 +58,7 @@ class InitiatePayment extends Base {
 		return {
 			orderCurrency : 'INR',
 			orderMeta : {
-				notifyUrl : 'https://example.com/notify'
+				notifyUrl : 'https://2d2b-2409-40c0-1034-88a3-cc74-36bd-5857-d0fd.ngrok-free.app/'
 			}
 		};
 	}

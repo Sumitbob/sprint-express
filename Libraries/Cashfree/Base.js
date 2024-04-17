@@ -8,11 +8,11 @@ class Base extends TransponseReqestResponse {
 	}
 
 	get clientId () {
-		return '';//get from static
+		return 'TEST10171219edd76a45a85dc5471cd891217101';//get from static
 	}
 
 	get clientSecret () {
-		return ''; //get from static
+		return 'cfsk_ma_test_4e6f5087f6f89d31c2d82200f6fe99c4_c4189e6f'; //get from static
 	}
 
 	get apiEndpointUrl () {
@@ -36,7 +36,7 @@ class Base extends TransponseReqestResponse {
 			const response = await axios.post(url, data, authHeader);
 			return response.data;
 		} catch (error) {
-			throw error.response || { data: error.message } || error;
+			throw error.response.data || { data: error.message } || error;
 		}
 	}
 
