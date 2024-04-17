@@ -45,11 +45,18 @@ class SendLoginOtpValidator extends RequestValidator {
 	constructor () {
 		super(Joi.object({
 			body: Joi.object({
-				mobile: Joi.string().required().messages({
-					'any.required': 'Mobile number is required',
-					'string.empty': 'Mobile number cannot be empty',
-					'string.base': 'Mobile number must be a string'
-				})
+				contact: Joi.number().integer()
+					.integer()
+					.required()
+					.min(1000000000) // Minimum 10-digit number
+					.max(9999999999) // Maximum 10-digit number
+					.messages({
+						'any.required': 'Contact number is required',
+						'number.empty': 'Contact number cannot be empty',
+						'number.base': 'Contact number must be a number',
+						'number.min': 'Contact number must be a 10-digit number',
+						'number.max': 'Contact number must be a 10-digit number'
+					})
 			}).required(),
 			query: Joi.object().unknown(),
 			headers: Joi.object().unknown()

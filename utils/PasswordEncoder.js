@@ -21,7 +21,7 @@ class PasswordEncoder {
 	verify (secret, encoded) {
 		const parts = encoded.split('$');
 		const salt = parts[2];
-		const userEncoded = this.encode(secret, salt);
+		const userEncoded = this.encode(secret.toString(), salt);
 		return userEncoded === encoded;
 	}
 }

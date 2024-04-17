@@ -21,6 +21,10 @@ class ErrorHandler {
 			statusCode = 500;
 			message = 'Internal Server Error';
 		}
+		else if(err.name === 'AlreadyExistError') {
+			statusCode = 404,
+			message = err.message || 'Already Exist';
+		}
 		else {
 			statusCode = 500;
 			message = 'Internal Server Error';

@@ -1,10 +1,12 @@
 const express = require('express');
+const app = express();
 const user = require('./user');
 const ApiAuth = require('../Middlewares/Auth/ApiAuth');
-const app = express();
+const seller = require('./seller');
 
-app.use(ApiAuth.authenticate);
 app.use('/user', user);
+app.use('/seller', seller);
+app.use(ApiAuth.authenticate);
 
 
 module.exports = app;
