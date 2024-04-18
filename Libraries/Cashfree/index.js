@@ -35,23 +35,3 @@ class Cashfree {
 	}
 }
 module.exports = new Cashfree();
-
-
-
-
-
-// const DatabaseManager = require('../../Server/DatabaseManager');
-
-
-// (async () => {
-// 	try {
-// 		await new DatabaseManager('development').initializeSQL();
-// 		await new Cashfree().createPaymentOrder();
-// 		process.exit(1);
-
-// 	} catch (error) {
-// 		// eslint-disable-next-line no-console
-// 		console.error('Error initializing application:', error);
-// 		process.exit(1);
-// 	}
-// })();
