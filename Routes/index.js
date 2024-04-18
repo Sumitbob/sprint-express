@@ -1,8 +1,11 @@
 const express = require('express');
 const user = require('./user');
-const ApiAuth = require('../Middlewares/Auth/ApiAuth');
+const casfree = require('./cashfree');
+const ApiAuth = require('../Middlewares/auth/ApiAuth');
 const app = express();
 
+
+app.use('/cashfree', casfree);
 app.use(ApiAuth.authenticate);
 app.use('/user', user);
 

@@ -58,7 +58,7 @@ class InitiatePayment extends Base {
 		return {
 			orderCurrency : 'INR',
 			orderMeta : {
-				notifyUrl : 'https://2d2b-2409-40c0-1034-88a3-cc74-36bd-5857-d0fd.ngrok-free.app/'
+				notifyUrl : 'https://2d2b-2409-40c0-1034-88a3-cc74-36bd-5857-d0fd.ngrok-free.app/cashfree/notify'
 			}
 		};
 	}

@@ -7,7 +7,11 @@ const CashfreeStepEnum = {
 
 class Cashfree {
 
-	async createPaymentOrder (customerId = '21313') {
+	async createPaymentOrder ({ customerId = '21313', amount }) {
+		//just for test
+		const min = Math.pow(10, 6 - 1);
+		const max = Math.pow(10, 6) - 1;
+		const randomOrd =  Math.floor(Math.random() * (max - min + 1)) + min;
 		const data = {
 			customerDetails: {
 				customerId,
@@ -15,8 +19,8 @@ class Cashfree {
 				customerPhone: '7239887406',
 				customerName: 'Paramanand'
 			},
-			orderId: 'test-ord-28',
-			orderAmount: 10,
+			orderId: 'test-ord-'+ randomOrd,
+			orderAmount: amount,
 		};
 		try {
 			const initiatePayment = new InitiatePayment();
@@ -25,7 +29,7 @@ class Cashfree {
 			return response;
 		} catch (error) {
 			await CashfreeRequestResponseLog.insert({ customerId, request: JSON.stringify(data), step: 1, success: false, error :  JSON.stringify(error) });
-
+			throw  new Error(error);
 		}
 
 	}

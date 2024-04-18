@@ -5,10 +5,11 @@ const app = express();
 const router = express.Router();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { ErrorHandler } = require('./Middlewares/Handlers');
-
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(cors());
 
 const Routes = require('./routes');
 
