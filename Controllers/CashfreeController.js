@@ -7,8 +7,8 @@ class Cashfree {
 	}
 
 	static createPaymentOrderCallback (req) {
-		const data = req.body;
-		CashfreeService.createPaymentOrderCallback(data);
+		const body = req.body;
+		CashfreeService.createPaymentOrderCallback(body);
 	}
 }
 
