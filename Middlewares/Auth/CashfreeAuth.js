@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const { ValidationError } = require('../Handlers/');
+const { ValidationError } = require('../Handlers');
 
 class CashfreeAuth {
 	static webhookAuth (req, res, next) {
