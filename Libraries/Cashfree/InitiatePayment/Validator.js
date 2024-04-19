@@ -15,6 +15,7 @@ class Validator {
 			orderCurrency: Joi.string().min(3).max(5).required(),
 			orderMeta : Joi.object({
 				notifyUrl : Joi.string().uri().required(),
+				returnUrl : Joi.string().uri().required()
 			}).required()
 		});
 	}
