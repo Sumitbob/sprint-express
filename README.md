@@ -16,7 +16,7 @@ To get started with this project, follow these steps:
 1. Clone this repository.
 2. Install dependencies using `npm install`.
 3. Set up your database configurations in `config.js`.
-4. Start the server with `npm start`.
+4. Start the server with `npm run dev`.
 
 ## Project Structure
 
