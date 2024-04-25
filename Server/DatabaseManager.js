@@ -4,7 +4,8 @@ const config = require('../config/config');
 
 class DatabaseManager {
 	constructor () {
-		const env = process.env.NODE_ENV || 'development';
+		// const env = process.env.NODE_ENV || 'development';
+		const env = 'development';
 		const { username, password, database, host } = config[env];
 
 		this.readDbConfig = {
