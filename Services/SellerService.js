@@ -1,4 +1,4 @@
-const { AlreadyExistError, ValidationError } = require('../Middlewares/Handlers');
+const { ValidationError } = require('../Middlewares/Handlers');
 const PasswordEncoder = require('../utils/PasswordEncoder');
 const RandomNumberGenerator = require('../utils/RandomNumberGenerator');
 const SellerModel = require('../Models/SellerModel');
@@ -30,7 +30,7 @@ class SellerService {
 			contact
 		});
 		if(sellerData) {
-			throw new AlreadyExistError('Seller already exist'); 
+			throw new ValidationError('Seller already exist'); 
 		}
 		const hashPassword = this.passwordEncoder.encode(password);
 
